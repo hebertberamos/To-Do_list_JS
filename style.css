@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica&display=swap');
+
+:root{
+    --family-font: 'Geologica', sans-serif;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input{
+    padding: 5px;
+    box-shadow: 2px 3px 0px black;
+}
+
+input:focus{
+    outline: none;
+    box-shadow: none;
+    transform: translate(3px, 2px);
+}
+
+/* ESCONDIDO */
+.hide{
+    display: none;
+}
+
+.page-card{
+    background-color: rgb(177, 177, 177);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-to-do-list{
+    background-color: white;
+    max-height: 600px;
+    border: 1px solid black;
+    padding:10px 17px 10px 17px;
+    border-radius: 15px;
+    box-shadow: 10px 10px 0px black;
+}
+
+/* CABECALHO */
+.to-do-list-header{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px 10px 0px;
+    border-bottom: 1px solid rgb(161, 161, 161);
+}
+
+.to-do-list-header h1{
+    font-family: var(--family-font);
+    font-size: 25px;
+}
+
+/* ADICAO DE TAREFA */
+.add-task{
+    padding: 16px;
+    border-bottom: 1px solid rgb(161, 161, 161);
+}
+
+.add-task p{
+    font-family: var(--family-font);
+    font-size: large;
+    font-weight: 400;
+}
+
+.add-task button{
+    padding: 5px 8px;
+    color: #102f5e;
+    border: 2px solid #102f5e;
+    box-shadow: 2px 2px 0px black;
+}
+
+.add-task button:hover{
+    background-color: #102f5e;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.4s;
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+/* EDICAO DE TAREFA */
+.edit-task{
+    padding: 16px;
+    border-bottom: 1px solid rgb(161, 161, 161);
+}
+
+.edit-task p{
+    font-family: var(--family-font);
+    font-size: large;
+    font-weight: 400;
+}
+
+.edit-task-input-chek-button button{
+    padding: 5px 8px;
+    color: #102f5e;
+    border: 2px solid #102f5e;
+    margin-bottom: 8px;
+    box-shadow: 2px 2px 0px black;
+}
+
+.edit-task-input-chek-button button:hover{
+    background-color: #102f5e;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.6s;
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+#btn-cancel{
+    padding: 7px;
+    border: 2px solid #102f5e;
+    color: #102f5e;
+    box-shadow: 2px 2px 0px black;
+}
+
+#btn-cancel:hover{
+    background-color: #102f5e;
+    color: rgb(226, 75, 75);
+    transition:background-color 0.4s, color 0.8s;
+    cursor: pointer;
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+/* .hide{
+    display: none;
+} */
+
+/* CAMPO DE PESQUISA */
+.research-field{
+    display: flex;
+    padding: 16px;
+    border-bottom: 1px solid rgb(161, 161, 161);
+    width: 100%;
+    max-width: 560px;
+}
+
+.search-field{
+    border-right: 1px solid rgb(161, 161, 161);
+    margin-right: 6px;
+    padding-right: 6px;
+}
+
+.search-field button{
+    padding: 5px 8px;
+    color: #102f5e;
+    border: 2px solid #102f5e;
+    box-shadow: 2px 2px 0px black;
+}
+
+.search-field button:hover{
+    background-color: #102f5e;
+    color: white;
+    transition: background-color 0.4s;
+    cursor: pointer;
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+.filter-field select{
+    padding: 5px;
+    box-shadow: 2px 3px 0px black;
+}
+
+.filter-field select:focus{
+    transform: translate(2px, 2px);
+    box-shadow: none;
+    outline: none;
+}
+
+
+/* CARD DAS TAREFAS */
+.tasks-card{
+    margin-top: 10px;
+    padding: 5px;
+    width: 340px;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.task{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 7px;
+    border-bottom: 1px solid rgb(161, 161, 161);
+}
+
+.task-buttons button{
+    padding: 5px 10px;
+    cursor: pointer;
+    box-shadow: 2px 3px 0px black;
+}
+
+.task-buttons button:hover{
+    background-color: #102f5e;
+    color: white;
+    transition: background-color 0.4s;
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+/* CARD DE LIMPAR TUDO */
+.card-clear-all{
+    padding: 10px 0px 15px 0px ;
+}
+
+.card-clear-all button{
+    padding: 5px;
+    border: 1px solid #102f5e;
+    color: rgb(185, 3, 3);
+    cursor: pointer;
+    box-shadow: 2px 3px 0px black;
+}
+
+.card-clear-all button:hover{
+    background-color: #102f5e;
+    color: rgb(253, 138, 138);
+    transition: background-color 0.6s;
+    transform: translate(3px, 2px);
+    box-shadow: none;
+}

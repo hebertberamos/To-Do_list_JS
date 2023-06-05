@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="pt-br">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>To Do List</title>
+</head>
+<body>
+    <section class="page-card">
+        <section class="card-to-do-list">
+            <div class="to-do-list-header">
+                <h1> To Do List</h1>
+            </div>
+            <div class="add-task">
+                <p>Adicionar tarefa:</p>
+                <input type="text" id="input-task" placeholder="Adicionar tarefa">
+                <button id="btn-add-tesk">
+                    <i class="fa-sharp fa-solid fa-plus"></i>
+                </button>
+            </div>
+             <div class="edit-task hide"> <!-- ESCONDIDO  hide-->
+                <div class="edit-task-input-chek-button">
+                    <p>Editar tarefa:</p>
+                    <input type="text">
+                    <button id="confirm-edition">
+                        <i class="fa-sharp fa-solid fa-check-double"></i>
+                    </button>
+                </div>
+                <button id="btn-cancel">Cancelar</button>
+            </div>
+            <div class="research-field hide">
+                <div class="search-field ">
+                    <p>Pesquisar:</p>
+                    <input type="text" id="input-search" placeholder="Pesquisar">
+                    <button id="btn-clear-input-search"> 
+                        <i class="fa-solid fa-delete-left"></i>
+                    </button>
+                </div>
+                <div class="filter-field ">
+                    <p>Filtro</p>
+                    <select name="state" id="staate">
+                        <option value="all">Todos</option>
+                        <option value="doing">Realizando</option>
+                        <option value="to-do">Pendente</option>
+                        <option value="done">Feito</option>
+                    </select>
+                </div>
+            </div>
+            <div class="tasks-card">
+                <div class="task">
+                    <p id="task-name">Estudar JavaScript</p>
+                    <div class="task-buttons">
+                        <button class="task-btn" id="btn-check-option">
+                            <i class="fa-sharp fa-solid fa-check"></i>
+                        </button>
+                        <button class="task-btn" id="btn-edit-opition">
+                            <i class="fa-sharp fa-solid fa-pen"></i>
+                        </button>
+                        <button class="task-btn" id="btn-delete-opition">
+                            <i class="fa-sharp fa-solid fa-xmark"></i>
+                        </button>
+                        <button class="task-btn" id="btn-running-option">
+                            <i class="fa-solid fa-spinner"></i>
+                        </button>
+                    </div>
+                </div>
+                
+            <div class="card-clear-all">
+                <button id="btn-clear-all">Limpar todas as tarefas</button>
+            </div>
+        </section>
+    </section>
+</body>
+</html>
