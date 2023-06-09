@@ -95,6 +95,9 @@ input:focus{
     font-family: var(--family-font);
     font-size: large;
     font-weight: 400;
+    font-family: var(--family-font);
+    font-size: large;
+    font-weight: 400;
 }
 
 .edit-task-input-chek-button button{
@@ -149,6 +152,12 @@ input:focus{
     padding-right: 6px;
 }
 
+.search-field p{
+    font-family: var(--family-font);
+    font-size: large;
+    font-weight: 400;
+}
+
 .search-field button{
     padding: 5px 8px;
     color: #102f5e;
@@ -170,6 +179,12 @@ input:focus{
     box-shadow: 2px 3px 0px black;
 }
 
+.filter-field p{
+    font-family: var(--family-font);
+    font-size: large;
+    font-weight: 400;
+}
+
 .filter-field select:focus{
     transform: translate(2px, 2px);
     box-shadow: none;
@@ -178,31 +193,40 @@ input:focus{
 
 
 /* CARD DAS TAREFAS */
-.tasks-card{
-    margin-top: 10px;
-    padding: 5px;
-    width: 340px;
-    max-height: 200px;
+#todo-list{    
+    width: 100%;
+    max-height: 250px;
     overflow: auto;
 }
 
-.task{
+.todo{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    padding: 5px;
-    margin-top: 10px;
-    margin-bottom: 7px;
+    padding: 10px 5px;
     border-bottom: 1px solid rgb(161, 161, 161);
+    width: 100%;
+    max-width: 340px;
+    margin: auto;
 }
 
-.task-buttons button{
+.todo p{
+    margin-right: 5px;
+    font-family: var(--family-font);
+}
+
+.todo button{
+    margin-left: 5px;
+}
+
+.todo button{
     padding: 5px 10px;
     cursor: pointer;
     box-shadow: 2px 3px 0px black;
+    border: 1px solid #102f5e;
 }
 
-.task-buttons button:hover{
+.todo button:hover{
     background-color: #102f5e;
     color: white;
     transition: background-color 0.4s;
@@ -229,4 +253,38 @@ input:focus{
     transition: background-color 0.6s;
     transform: translate(3px, 2px);
     box-shadow: none;
+}
+
+/*  --------------- TASK STATUS --------------- */
+
+.done {
+    background-color: #3c485f;
+    transition: 0.3s;
+    color: white;
+}
+
+.done p {
+    text-decoration: line-through;
+}
+
+.done button{
+    box-shadow: none;
+}
+
+.done button:hover{
+    transform: translate(0px, 0px);
+
+}
+
+.in-process{
+    background-color: rgb(154, 202, 154);
+    transition: background-color 0.3s;
+}
+
+.in-process button{
+    box-shadow: none;
+}
+
+.in-process button:hover{
+    transform: translate(0px, 0px);
 }

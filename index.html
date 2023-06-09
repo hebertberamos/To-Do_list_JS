@@ -21,7 +21,7 @@
                     <i class="fa-sharp fa-solid fa-plus"></i>
                 </button>
             </div>
-             <div class="edit-task hide"> <!-- ESCONDIDO  hide-->
+             <div class="edit-task hide"> <!-- ESCONDIDO  "hide"-->
                 <div class="edit-task-input-chek-button">
                     <p>Editar tarefa:</p>
                     <input type="text">
@@ -31,7 +31,7 @@
                 </div>
                 <button id="btn-cancel">Cancelar</button>
             </div>
-            <div class="research-field hide">
+            <section class="research-field">
                 <div class="search-field ">
                     <p>Pesquisar:</p>
                     <input type="text" id="input-search" placeholder="Pesquisar">
@@ -39,7 +39,7 @@
                         <i class="fa-solid fa-delete-left"></i>
                     </button>
                 </div>
-                <div class="filter-field ">
+                <div class="filter-field">
                     <p>Filtro</p>
                     <select name="state" id="staate">
                         <option value="all">Todos</option>
@@ -48,30 +48,29 @@
                         <option value="done">Feito</option>
                     </select>
                 </div>
-            </div>
-            <div class="tasks-card">
-                <div class="task">
-                    <p id="task-name">Estudar JavaScript</p>
-                    <div class="task-buttons">
-                        <button class="task-btn" id="btn-check-option">
+            </section>
+            <section id="todo-list">
+                <!-- <div class="todo">
+                    <p>Estudar JavaScript</p>
+                        <button class="finish-todo">
                             <i class="fa-sharp fa-solid fa-check"></i>
                         </button>
-                        <button class="task-btn" id="btn-edit-opition">
+                        <button class="todo-edit">
                             <i class="fa-sharp fa-solid fa-pen"></i>
                         </button>
-                        <button class="task-btn" id="btn-delete-opition">
+                        <button class="todo-delete">
                             <i class="fa-sharp fa-solid fa-xmark"></i>
                         </button>
-                        <button class="task-btn" id="btn-running-option">
+                        <button class="todo-doing">
                             <i class="fa-solid fa-spinner"></i>
                         </button>
-                    </div>
-                </div>
-                
+                </div> -->
+            </section>
             <div class="card-clear-all">
                 <button id="btn-clear-all">Limpar todas as tarefas</button>
             </div>
         </section>
     </section>
 </body>
+<script type="module" src="js/script.js"></script>
 </html>
