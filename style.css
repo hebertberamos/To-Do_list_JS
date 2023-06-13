@@ -86,12 +86,12 @@ input:focus{
 }
 
 /* EDICAO DE TAREFA */
-.edit-task{
+#edit-task{
     padding: 16px;
     border-bottom: 1px solid rgb(161, 161, 161);
 }
 
-.edit-task p{
+#edit-task p{
     font-family: var(--family-font);
     font-size: large;
     font-weight: 400;
@@ -276,15 +276,15 @@ input:focus{
 
 }
 
-.in-process{
+.doing{
     background-color: rgb(154, 202, 154);
     transition: background-color 0.3s;
 }
 
-.in-process button{
+.doing button{
     box-shadow: none;
 }
 
-.in-process button:hover{
+.doing button:hover{
     transform: translate(0px, 0px);
 }

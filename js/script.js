@@ -1,33 +1,52 @@
 //  ------------ INPUTS ------------
+const divAddTask = document.querySelector('#add-task');
 const inputTask = document.querySelector('#input-task');
-
-
-//  ------------ BUTTONS ------------
 const btnSaveTesk = document.querySelector('#btn-add-tesk');
+const todoList = document.querySelector('#todo-list');
 
-const btnCheckPoint = document.querySelector('.finish-todo');
-const btnEditOption = document.querySelector('.todo-edit');
-const btnDeleteOption = document.querySelector('.todo-delete');
-const btnDoingOptin = document.querySelector('.todo-doing');
+const divEditForm = document.querySelector('#edit-task');
+const inputChangeTask = document.querySelector('#edit-task-name');
+const btnConfirmChange = document.querySelector('#confirm-edition');
+const btnCancelEdition = document.querySelector('#btn-cancel');
 
-//  ------------ CARD TASK ------------
-const taskSection = document.querySelector('#todo-list');
+const btnClearAll = document.querySelector('#btn-clear-all');
 
-//  ------------ TASK ------------
-const taskAdded = document.querySelectorAll('.todo');
 
-//  ------------ INPUT FUNCTIONS ------------
+inputTask.addEventListener('keydown', (event) => {
+    if(event.key == "Enter"){
+        if(inputTask.value != ""){
+            event.preventDefault();
+            implementTask(inputTask.value);
+            inputTask.value = "";
+        }   
+    }
+});
 
-var task = "";
+//  ------------ SAVE TASK BUTTON ------------
+btnSaveTesk.addEventListener('click', (event) => {
+    event.preventDefault();
 
-inputTask.addEventListener('change', (event) => {
-    task = event.target.value;
+    if(inputTask.value != ""){
+
+        implementTask(inputTask.value);
+        inputTask.value = "";
+        
+    }else{
+        return;
+    }
+});
+
+btnConfirmChange.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    divEditForm.classList.add("hide");
+    divAddTask.classList.remove("hide");
+    todoList.classList.remove("hide");
 });
 
 function implementTask(taskName){
-    const task = createNewTask(taskName);
-
-    taskSection.appendChild(task);
+    const newTask = createNewTask(taskName);
+    todoList.appendChild(newTask);
 }
 
 function createNewTask(taskName){
@@ -38,52 +57,68 @@ function createNewTask(taskName){
     p.innerHTML = taskName;
     div.appendChild(p);
 
-    const btnFinishTodo = document.createElement("button");
-    btnFinishTodo.classList.add("finish-todo");
-    btnFinishTodo.innerHTML = '<i class="fa-sharp fa-solid fa-check"></i>';
-    div.appendChild(btnFinishTodo);
+    const btnDone = document.createElement("button");
+    btnDone.classList.add("finish-todo");
+    btnDone.innerHTML = '<i class="fa-sharp fa-solid fa-check"></i>';
+    btnDone.addEventListener("click", (e) => {
+        e.preventDefault();
+        const result = verifyClass(div);
+        if(result < 1){
+            div.classList.add("done")
+        }else{
+            if(div.classList.contains("done")){
+                div.classList.remove("done");
+            }
+        }
+    });
+    div.appendChild(btnDone);
 
     const btnTodoEdit = document.createElement("button");
     btnTodoEdit.classList.add("todo-edit");
     btnTodoEdit.innerHTML = '<i class="fa-sharp fa-solid fa-pen"></i>';
+    btnTodoEdit.addEventListener('click', (e) => {
+        e.preventDefault();
+        divEditForm.classList.remove("hide");
+        divAddTask.classList.add("hide");
+        todoList.classList.add("hide");
+
+        inputChangeTask.value = p.innerHTML;
+    });
     div.appendChild(btnTodoEdit);
 
-    const btnTodoDelete = document.createElement("button");
-    btnTodoDelete.classList.add("todo-delete");
-    btnTodoDelete.innerHTML = '<i class="fa-sharp fa-solid fa-xmark"></i>';
-    div.appendChild(btnTodoDelete);
+    const btnDelete = document.createElement("button");
+    btnDelete.classList.add("todo-delete");
+    btnDelete.innerHTML = '<i class="fa-sharp fa-solid fa-xmark"></i>';
+    btnDelete.addEventListener('click', (e) => {
+        e.preventDefault();
+        todoList.removeChild(div);
+    });
+    div.appendChild(btnDelete);
     
-    const btnTodoDoing = document.createElement("button");
-    btnTodoDoing.classList.add("todo-doing");
-    btnTodoDoing.innerHTML = '<i class="fa-solid fa-spinner"></i>';
-    div.appendChild(btnTodoDoing);
+    const btnDoing = document.createElement("button");
+    btnDoing.classList.add("todo-doing");
+    btnDoing.innerHTML = '<i class="fa-solid fa-spinner"></i>';
+    btnDoing.addEventListener('click', (e) => {
+        e.preventDefault();
+        const result = verifyClass(div);
+        if(result < 1){
+            div.classList.add("doing");
+        }else{
+            if(div.classList.contains("doing")){
+                div.classList.remove("doing");
+            }
+        }
+    });
+    div.appendChild(btnDoing);
 
     return div;
 }
 
-//  ------------ SAVE TASK BUTTON ------------
-btnSaveTesk.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    if(inputTask.value != ""){
-        inputTask.value = "";
-
-        implementTask(task);
-    }else{
-        return;
+function verifyClass(element){
+    if(element.classList.length > 1){
+        return 1
     }
-});
-
-
-
-//  ------------ tesk button check ------------
-// btnCheckPoint.addEventListener('click', (event) => {
-//     event.preventDefault();
-
-//     if(taskAdded.classList.contains("done")){
-//         taskAdded.classList.remove("done")
-//     }
-//     else{
-//         taskAdded.classList.add("done");
-//     }
-// });
+    else{
+        return 0
+    }
+}
