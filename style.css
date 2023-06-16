@@ -297,7 +297,3 @@ input:focus{
 .doing button:hover{
     transform: translate(0px, 0px);
 }
-
-.selected-task {
-    background-color: aqua;
-}

@@ -80,6 +80,17 @@ btnConfirmChange.addEventListener('click', (e) => {
     todoList.classList.remove("hide");
 });
 
+//Botão de cancelar mudança
+btnCancelEdition.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    divEditForm.classList.add("hide");
+    divAddTask.classList.remove("hide");
+    todoList.classList.remove("hide");
+    inputChangeTask.value = "";
+
+});
+
 function implementTask(taskName) {
     const newTask = createNewTask(taskName);
     todoList.appendChild(newTask);
@@ -105,6 +116,10 @@ function createNewTask(taskName) {
         } else {
             if (div.classList.contains("done")) {
                 div.classList.remove("done");
+            }
+            else if(div.classList.contains("doing")){
+                div.classList.remove("doing");
+                div.classList.add("done");
             }
         }
     });
