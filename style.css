@@ -211,6 +211,10 @@ input:focus{
 }
 
 .todo p{
+    width: 150px;
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 0.85em;
     margin-right: 5px;
     font-family: var(--family-font);
 }
@@ -220,7 +224,6 @@ input:focus{
 }
 
 .todo button{
-    padding: 5px 10px;
     cursor: pointer;
     box-shadow: 2px 3px 0px black;
     border: 1px solid #102f5e;
@@ -232,6 +235,10 @@ input:focus{
     transition: background-color 0.4s;
     transform: translate(2px, 2px);
     box-shadow: none;
+}
+
+.todo > button > i{
+    padding: 5px 10px;
 }
 
 /* CARD DE LIMPAR TUDO */
@@ -265,6 +272,8 @@ input:focus{
 
 .done p {
     text-decoration: line-through;
+    font-style: italic;
+    font-weight: normal;
 }
 
 .done button{
@@ -287,4 +296,8 @@ input:focus{
 
 .doing button:hover{
     transform: translate(0px, 0px);
+}
+
+.selected-task {
+    background-color: aqua;
 }
