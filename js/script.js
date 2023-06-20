@@ -9,8 +9,78 @@ const inputChangeTask = document.querySelector('#edit-task-name');
 const btnConfirmChange = document.querySelector('#confirm-edition');
 const btnCancelEdition = document.querySelector('#btn-cancel');
 
-const btnClearAll = document.querySelector('#btn-clear-all');
+const inputSearch = document.querySelector('#input-search');
+const btnClearSearch = document.querySelector('#btn-clear-input-search');
 
+const btnClearAll = document.querySelector('#btn-clear-all');
+btnClearAll.addEventListener("click", (e) => {
+    e.preventDefault();
+});
+
+inputSearch.addEventListener('input', (e) => {
+    const searchItem = e.target.value.toLowerCase();
+    
+    const tasksParagraph = usualyWords();
+    const result = searchByLeatter(searchItem);
+    const elementsOutsideArray = selectElementOutsideArray(tasksParagraph, result);
+
+    elementsOutsideArray.forEach((elements) => {
+        elements.parentNode.classList.remove("todo");
+        elements.parentNode.classList.add("hide");
+    });
+
+    result.forEach((elements) => {
+        elements.parentNode.classList.remove("hide");
+        elements.parentNode.classList.add("todo");
+    });
+    
+});
+
+btnClearSearch.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    inputSearch.value = "";
+
+    const tasksParagraph = usualyWords();
+    tasksParagraph.forEach((paragraphs) => {
+        paragraphs.parentNode.classList.remove("hide");
+        paragraphs.parentNode.classList.add("todo");
+    });
+});
+
+
+function usualyWords(){
+    const tasksParagraph = todoList.querySelectorAll("div p");
+    const usualyWords = [];
+    tasksParagraph.forEach((elements) => {
+        usualyWords.push(elements);
+    });
+
+    return usualyWords;
+}
+
+function searchByLeatter(letter){
+    const paragraphName = usualyWords();
+
+    const result = [];
+
+    Array.from(paragraphName).forEach((paragraph) => {
+        const text = paragraph.textContent.toLowerCase();
+        if(text.includes(letter.toLowerCase())){
+            result.push(paragraph);
+        }
+    });
+
+    return result;
+}
+
+function selectElementOutsideArray(completeArray, searchedArray){
+    const outsideArray = completeArray.filter((elements) => {
+        return !searchedArray.includes(elements);
+    });
+
+    return outsideArray;
+}
 
 inputTask.addEventListener('keydown', (event) => {
     if (event.key == "Enter") {
