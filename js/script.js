@@ -12,14 +12,105 @@ const btnCancelEdition = document.querySelector('#btn-cancel');
 const inputSearch = document.querySelector('#input-search');
 const btnClearSearch = document.querySelector('#btn-clear-input-search');
 
+const selectState = document.querySelector('#state');
+
 const btnClearAll = document.querySelector('#btn-clear-all');
 btnClearAll.addEventListener("click", (e) => {
     e.preventDefault();
 });
 
+selectState.addEventListener('change', (e) => {
+    const state = e.target.value;
+    const allDivUseHere = turnArray();
+
+    switch (state) {
+        case "all":
+            allDivUseHere.forEach((elements) => {
+                elements.style.display = "flex";
+            });
+            break;
+        case "doing":
+            allDivUseHere.forEach((elements) => {
+                elements.style.display = "flex";
+            });
+            const elementsWithClassDoing = catchElements("doing");
+            const elementsDontHaveClassDoing = catchinOtterElements("doing", elementsWithClassDoing);
+            turnIvisivle(elementsDontHaveClassDoing);
+            break;
+        case "to-do":
+            allDivUseHere.forEach((elements) => {
+                elements.style.display = "flex";
+            });
+            const elementsDontShowTodo = []
+            allDivUseHere.forEach((elements) => {
+                if(elements.classList.contains("doing") || elements.classList.contains("done")){
+                    elementsDontShowTodo.push(elements);
+                }
+                turnIvisivle(elementsDontShowTodo);
+            })
+            break;
+        case "done":
+            allDivUseHere.forEach((elements) => {
+                elements.style.display = "flex";
+            });
+            const elementsWithClassDone = catchElements("done");
+            const elementsDontHaveClassDone = catchinOtterElements("done", elementsWithClassDone);
+            turnIvisivle(elementsDontHaveClassDone);
+            break;
+
+        default:
+            return;
+    }
+});
+
+function turnArray() {
+    const divs = todoList.querySelectorAll("div");
+
+    const arrayDivs = [];
+    divs.forEach((elements) => {
+        arrayDivs.push(elements);
+    });
+
+    return arrayDivs;
+}
+
+function catchElements(className) {
+    const divs = todoList.querySelectorAll("div");
+    const resultDivs = [];
+
+    Array.from(divs).forEach((elements) => {
+        if (elements.classList.contains(className)) {
+            resultDivs.push(elements);
+        }
+    });
+
+    return resultDivs;
+}
+
+function catchinOtterElements(className, elementsWithClass) {
+    elementsWithClass = catchElements(className);
+    const completeArrayNodeList = todoList.querySelectorAll("div");
+
+    const resultDivs = [];
+
+    Array.from(completeArrayNodeList).forEach((elements) => {
+        if (!elements.classList.contains(className)) {
+            resultDivs.push(elements);
+        }
+    });
+
+    return resultDivs;
+}
+
+function turnIvisivle(array) {
+    array.forEach((elements) => {
+        elements.style.display = "none";
+    });
+}
+
 inputSearch.addEventListener('input', (e) => {
     const searchItem = e.target.value.toLowerCase();
-    
+
     const tasksParagraph = usualyWords();
     const result = searchByLeatter(searchItem);
     const elementsOutsideArray = selectElementOutsideArray(tasksParagraph, result);
@@ -33,7 +124,7 @@ inputSearch.addEventListener('input', (e) => {
         elements.parentNode.classList.remove("hide");
         elements.parentNode.classList.add("todo");
     });
-    
+
 });
 
 btnClearSearch.addEventListener("click", (e) => {
@@ -49,7 +140,7 @@ btnClearSearch.addEventListener("click", (e) => {
 });
 
 
-function usualyWords(){
+function usualyWords() {
     const tasksParagraph = todoList.querySelectorAll("div p");
     const usualyWords = [];
     tasksParagraph.forEach((elements) => {
@@ -59,14 +150,14 @@ function usualyWords(){
     return usualyWords;
 }
 
-function searchByLeatter(letter){
+function searchByLeatter(letter) {
     const paragraphName = usualyWords();
 
     const result = [];
 
     Array.from(paragraphName).forEach((paragraph) => {
         const text = paragraph.textContent.toLowerCase();
-        if(text.includes(letter.toLowerCase())){
+        if (text.includes(letter.toLowerCase())) {
             result.push(paragraph);
         }
     });
@@ -74,7 +165,7 @@ function searchByLeatter(letter){
     return result;
 }
 
-function selectElementOutsideArray(completeArray, searchedArray){
+function selectElementOutsideArray(completeArray, searchedArray) {
     const outsideArray = completeArray.filter((elements) => {
         return !searchedArray.includes(elements);
     });
@@ -187,7 +278,7 @@ function createNewTask(taskName) {
             if (div.classList.contains("done")) {
                 div.classList.remove("done");
             }
-            else if(div.classList.contains("doing")){
+            else if (div.classList.contains("doing")) {
                 div.classList.remove("doing");
                 div.classList.add("done");
             }
